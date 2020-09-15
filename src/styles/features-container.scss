@@ -1,0 +1,21 @@
+.features-container {
+  display: flex;
+  width: 100%;
+
+  .features-selection-container {
+    display: flex;
+
+  }
+
+  .features-selector {
+
+    &.active {
+        color: white;
+    }
+
+    &:after {
+        content: '|'
+        
+    }
+  }
+}
