@@ -1,6 +1,7 @@
 /*=============================================>>>>>
-= Global Styles =
+= Base Styles =
 ===============================================>>>>>*/
-
-@import "_fonts";
-@import "_typography";
+@import "variables";
+@import "layout";
+@import "media";
+@import "typography";

@@ -1,12 +1,17 @@
 import React from "react"
+import Header from './header'
 import "normalize.css"
-import "../styles/global/styles.scss"
-import "./layout.scss"
+import "typeface-roboto"
+import "../styles/base.scss"
+import "../styles/layout.scss"
 
-const Layout = ({ children }) => (
+const Layout = ({ children }) => {
+
+  return (
   <>
+    <Header />
     <main className="wrapper">{children}</main>
   </>
-)
+)}
 
 export default Layout
