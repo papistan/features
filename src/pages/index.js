@@ -1,22 +1,66 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState } from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
+import { JobsContainer, Layout, SEO } from "components"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import "./index.scss"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+import animatedOpenPositions from "../images/open-positions.gif"
+
+const imageQuery = graphql`
+  query {
+    openPositions: file(relativePath: { eq: "open-positions@2x.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = () => {
+  const [showAnimation, setShowAnimation] = useState(false)
+  const data = useStaticQuery(imageQuery)
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <section className="hero-container">
+        <div className="hero-content">
+          <p className="overline wide">open positions</p>
+          <h1>Help us create the future of software</h1>
+          <p>
+            The ability to make software opens up tremendous creative
+            possibilitties, and we want to empower people to bring thse
+            possibility to life—no matter how ambitious. The good news is that
+            creating software doesn't have to mean writing code. What will you
+            create?
+          </p>
+        </div>
+
+        <div className="center hidden-mobile">
+          <div
+            className="hero-image"
+            onMouseEnter={() => setShowAnimation(true)}
+            onMouseLeave={() => setShowAnimation(false)}
+          >
+            <img
+              src={animatedOpenPositions}
+              alt="Two people juggling shapes animated"
+              className={`open-positions-gif ${!showAnimation && "hidden"}`}
+            />
+            <Img
+              fluid={data.openPositions.childImageSharp.fluid}
+              alt="Two people juggling shapes"
+              className={`open-positions-img ${showAnimation && "hidden"}`}
+            />
+          </div>
+        </div>
+      </section>
+      <JobsContainer />
+    </Layout>
+  )
+}
 
 export default IndexPage

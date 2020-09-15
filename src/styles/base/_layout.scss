@@ -1,0 +1,9 @@
+/*=============================================>>>>>
+= Layout Mixins =
+===============================================>>>>>*/
+
+@mixin display-grid {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 2em;   
+}
