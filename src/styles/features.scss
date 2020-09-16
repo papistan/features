@@ -28,10 +28,10 @@
   .features-selector {
     display: flex;
     color: white;
-    opacity: 25%;
+    opacity: 0.25;
 
     &.active {
-      opacity: 100%;
+      opacity: 1;
     }
 
     &:not(:last-child) .selector-number:after {
