@@ -68,8 +68,44 @@
     @include media-down(tablet) {
       max-width: 350px;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
+
     .features-selection-img {
       width: 100%;
     }
+  }
+}
+
+.feature-modal-card {
+  max-width: 600px;
+  height: 400px;
+  margin: 0 auto;
+  padding: 50px 20px 0 20px;
+  background-color: $white;
+
+  h2.feature-modal-card-number {
+    color: $blue-subtitle;
+    font-size: 64px;
+    margin-bottom: 10px;
+  }
+
+  .feature-modal-card-heading {
+    color: black;
+    font-weight: $font-weight-medium;
+    font-size: 32px;
+    margin-top: 0;
+  }
+
+  .feature-description-divider {
+    width: 50px;
+    border: solid 1px black;
+  }
+
+  .feature-description-description {
+    font-size: 18px;
+    font-weight: 300;
   }
 }

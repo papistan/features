@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import FeatureSelector from "./featureSelector"
+import ModalComponent from "./modal"
 import "../styles/features.scss"
 
 export const squareImage = graphql`
@@ -36,20 +37,31 @@ function FeaturesContainer() {
     {
       number: "01",
       heading: "Real-time GPS Tracking",
+      description:
+        "Lorem ipsum dolor si Lorem ipsum dolor si Lorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor si.",
       image: data.realTime.childImageSharp.fluid,
     },
     {
       number: "02",
       heading: "AI-enabled Safety Cameras",
+      description:
+        "Lorem ipsum dolor si Lorem ipsum dolor si Lorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor si.",
       image: data.aiEnabled.childImageSharp.fluid,
     },
     {
       number: "03",
       heading: "Routing and Location Sharing",
+      description:
+        "Lorem ipsum dolor si Lorem ipsum dolor si Lorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor si.",
       image: data.routing.childImageSharp.fluid,
     },
   ]
   const [currentFeature, setCurrentFeature] = useState(selectors[0])
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const toggleModal = () => {
+    setModalOpen(!modalOpen)
+  }
 
   return (
     <section className="features-container">
@@ -72,13 +84,27 @@ function FeaturesContainer() {
             />
           ))}
         </div>
-        <div className="features-selection-img-container">
+        <div className="features-selection-img-container" onClick={toggleModal}>
           <Img
             fluid={currentFeature.image}
             alt={currentFeature.heading}
             className="features-selection-img"
           />
         </div>
+        <ModalComponent toggleModal={toggleModal} isOpen={modalOpen}>
+          <div className="feature-modal-card">
+            <h2 className="feature-modal-card-number">
+              {currentFeature.number}
+            </h2>
+            <p className="feature-modal-card-heading">
+              {currentFeature.heading}
+            </p>
+            <div className="feature-description-divider"></div>
+            <p className="feature-description-description">
+              {currentFeature.description}
+            </p>
+          </div>
+        </ModalComponent>
       </div>
     </section>
   )

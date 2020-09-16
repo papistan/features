@@ -5,8 +5,7 @@ import "typeface-roboto"
 import "../styles/base.scss"
 import "../styles/layout.scss"
 
-const Layout = ({ children }) => {
-
+function Layout({ children }){
   return (
   <>
     <Header />
