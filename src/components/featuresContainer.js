@@ -1,37 +1,13 @@
 import React, { useState } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
-
 import FeatureSelector from "./featureSelector"
 import ModalComponent from "./modal"
 import "../styles/features.scss"
 
-export const squareImage = graphql`
-  fragment squareImage on File {
-    childImageSharp {
-      fluid(maxWidth: 400) {
-        ...GatsbyImageSharpFluid
-      }
-    }
-  }
-`
-
-const imageQuery = graphql`
-  query {
-    realTime: file(relativePath: { eq: "01-real-time-gps.png" }) {
-      ...squareImage
-    }
-    aiEnabled: file(relativePath: { eq: "02-AI-enabled-safety.png" }) {
-      ...squareImage
-    }
-    routing: file(relativePath: { eq: "03-Routing-Location.png" }) {
-      ...squareImage
-    }
-  }
-`
+import realTime from "../images/01-real-time-gps.png"
+import aiEnabled from "../images/02-AI-enabled-safety.png"
+import routing from "../images/03-Routing-Location.png"
 
 function FeaturesContainer() {
-  const data = useStaticQuery(imageQuery)
 
   const selectors = [
     {
@@ -39,21 +15,21 @@ function FeaturesContainer() {
       heading: "Real-time GPS Tracking",
       description:
         "Lorem ipsum dolor si Lorem ipsum dolor si Lorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor si.",
-      image: data.realTime.childImageSharp.fluid,
+      image: realTime,
     },
     {
       number: "02",
       heading: "AI-enabled Safety Cameras",
       description:
         "Lorem ipsum dolor si Lorem ipsum dolor si Lorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor si.",
-      image: data.aiEnabled.childImageSharp.fluid,
+      image: aiEnabled,
     },
     {
       number: "03",
       heading: "Routing and Location Sharing",
       description:
         "Lorem ipsum dolor si Lorem ipsum dolor si Lorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor siLorem ipsum dolor si.",
-      image: data.routing.childImageSharp.fluid,
+      image: routing,
     },
   ]
   const [currentFeature, setCurrentFeature] = useState(selectors[0])
@@ -85,11 +61,12 @@ function FeaturesContainer() {
           ))}
         </div>
         <div className="features-selection-img-container" onClick={toggleModal}>
-          <Img
-            fluid={currentFeature.image}
+          <img
+            src={currentFeature.image}
             alt={currentFeature.heading}
             className="features-selection-img"
           />
+          <div className="features-box-shadow"></div>
         </div>
         <ModalComponent toggleModal={toggleModal} isOpen={modalOpen}>
           <div className="feature-modal-card">

@@ -75,6 +75,22 @@
 
     .features-selection-img {
       width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .features-box-shadow {
+      height: 10px;
+      margin-top: -200px;
+      margin-left: 220px;
+      background-color: transparent;
+      width: 10px;
+      box-shadow: 7px -104px 181px 156px rgba(250,247,250,1);
+      position: absolute;
+      z-index: 1;
+      @include media-down(tablet) {
+      display: none;
+    }
     }
   }
 }
