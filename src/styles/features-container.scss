@@ -1,21 +1,25 @@
 .features-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
+  padding: 100px;
 
   .features-selection-container {
     display: flex;
-
   }
 
   .features-selector {
-
+    padding-bottom: 20px;
     &.active {
-        color: white;
+      color: white;
     }
 
     &:after {
-        content: '|'
-        
+      content: "";
+      display: block;
+      width: 0px;
+      height: 50px;
+      border: solid 1px currentColor;
     }
   }
 }

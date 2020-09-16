@@ -1,15 +1,22 @@
 import React, { useState } from "react"
+import classNames from "classnames"
 import "../styles/features-container.scss"
 
-const Selector = ({ number, heading, subtitle, currentFeature }) => (
-  <div className={clasName("features-selector", "active": currentFeature === selector.number}>
-    <h2>{number}</h2>
-    <div className="selector-labels">
-      <p className="selector-heading">{heading}</p>
-      <p className="selector-subtitle">{subtitle}</p>
+function Selector({ number, heading, subtitle, currentFeature }) {
+  return (
+    <div
+      className={classNames("features-selector", {
+        active: currentFeature === number,
+      })}
+    >
+      <h2>{number}</h2>
+      <div className="selector-labels">
+        <p className="selector-heading">{heading}</p>
+        <p className="selector-subtitle">{subtitle}</p>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 function FeaturesContainer() {
   const [currentFeature, setCurrectFeature] = useState("01")
@@ -34,14 +41,14 @@ function FeaturesContainer() {
               heading={selector.heading}
               subtitle={selector.subtitle}
               currentFeature={currentFeature}
-              onClick={() => { setCurrectFeature(selector.number)}}
+              onClick={() => {
+                setCurrectFeature(selector.number)
+              }}
             />
           ))}
         </div>
 
-        <div className="features-selected-image">
-            
-        </div>
+        <div className="features-selected-image"></div>
       </div>
     </section>
   )
