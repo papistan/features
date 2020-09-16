@@ -30,6 +30,10 @@
     color: white;
     opacity: 0.25;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &.active {
       opacity: 1;
     }
