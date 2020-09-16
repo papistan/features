@@ -6,17 +6,17 @@
 // $font-weight-thin: 100;
 // $font-weight-extra-light: 200;
 // $font-weight-light: 300;
- $font-weight-regular: 400;
- $font-weight-medium: 500;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
 // $font-weight-semi-bold: 600;
-// $font-weight-bold: 700;
+$font-weight-bold: 700;
 // $font-weight-extra-bold: 800;
 // $font-weight-black: 900;
 
 @mixin heading-font() {
-  font-family: sans-serif;
+  font-family: roboto;
   font-weight: $font-weight-medium;
-  color: $darker-grey;
+  color: $white;
 }
 
 @mixin body-font() {
@@ -34,7 +34,7 @@
   @include heading-font();
   font-size: 64px;
   line-height: 1.1em;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   @include media-down(tablet) {
     font-size: 32px;
      line-height: 1.25em;
@@ -167,3 +167,7 @@ table {
 //   Common Classes
 // --------------------------------------------------------------------------
 
+p.subtitle {
+  color: $blue-subtitle;
+  font-family: roboto;
+}
