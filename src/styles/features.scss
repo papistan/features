@@ -85,19 +85,19 @@
       margin-left: 220px;
       background-color: transparent;
       width: 10px;
-      box-shadow: 7px -104px 181px 156px rgba(250,247,250,1);
+      box-shadow: 7px -104px 181px 156px rgba(250, 247, 250, 1);
       position: absolute;
       z-index: 1;
       @include media-down(tablet) {
-      display: none;
-    }
+        display: none;
+      }
     }
   }
 }
 
 .feature-modal-card {
   max-width: 600px;
-  height: 400px;
+  height: 100vh;
   margin: 0 auto;
   padding: 50px 20px 0 20px;
   background-color: $white;
